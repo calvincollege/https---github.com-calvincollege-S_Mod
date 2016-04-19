@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SPEEDO_MModelStoreContainer" CdmEntityContainer="SPEEDO_MEntities">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="SPEEDO_MModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="SPEEDO_MModel.review">
+        <MappingFragment StoreEntitySet="review">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shopping_cart">
+      <EntityTypeMapping TypeName="SPEEDO_MModel.shopping_cart">
+        <MappingFragment StoreEntitySet="shopping_cart">
+          <ScalarProperty Name="record_id" ColumnName="record_id" />
+          <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="date_created" ColumnName="date_created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="SPEEDO_MModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="product_code" ColumnName="product_code" />
+          <ScalarProperty Name="make" ColumnName="make" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="stock_quantity" ColumnName="stock_quantity" />
+          <ScalarProperty Name="image_url" ColumnName="image_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

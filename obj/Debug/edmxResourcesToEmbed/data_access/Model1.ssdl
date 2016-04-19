@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SPEEDO_MModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SPEEDO_M.webuser.products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="product_code" />
+    </Key>
+    <Property Name="product_code" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="make" Type="varchar" MaxLength="100" />
+    <Property Name="model" Type="varchar" MaxLength="100" />
+    <Property Name="year" Type="int" />
+    <Property Name="price" Type="float" />
+    <Property Name="stock_quantity" Type="int" />
+    <Property Name="image_url" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="review_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="customer_name" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="customer_email" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="rating" Type="int" />
+    <Property Name="comments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="shopping_cart">
+    <Key>
+      <PropertyRef Name="record_id" />
+    </Key>
+    <Property Name="record_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cart_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="date_created" Type="date" />
+  </EntityType>
+  <EntityContainer Name="SPEEDO_MModelStoreContainer">
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="webuser" store:Type="Tables" />
+    <EntitySet Name="review" EntityType="Self.review" Schema="webuser" store:Type="Tables" />
+    <EntitySet Name="shopping_cart" EntityType="Self.shopping_cart" Schema="webuser" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" store:Type="Tables" store:Schema="webuser">
+      <DefiningQuery>SELECT 
+    [products].[product_code] AS [product_code], 
+    [products].[make] AS [make], 
+    [products].[model] AS [model], 
+    [products].[year] AS [year], 
+    [products].[price] AS [price], 
+    [products].[stock_quantity] AS [stock_quantity], 
+    [products].[image_url] AS [image_url]
+    FROM [webuser].[products] AS [products]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
